@@ -54,6 +54,8 @@ CTLP_CAPI(MasterVol, source, argsJ, queryJ)
 	int master_volume;
 
 	json_object *valueJ;
+        
+        AFB_ApiNotice(source->api, "Hal-Unicens: MasterVolume=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -81,6 +83,8 @@ CTLP_CAPI(MasterSwitch, source, argsJ, queryJ)
 {
 	json_bool master_switch;
 	json_object *valueJ;
+        
+        AFB_ApiNotice(source->api, "Hal-Unicens: MasterSwitch=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master switch, value=%s", __func__, json_object_get_string(queryJ));
@@ -120,6 +124,8 @@ CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 	int pcm_volume[PCM_MAX_CHANNELS];
 
 	json_object *valueJ;
+        
+        AFB_ApiNotice(source->api, "Hal-Unicens: PCMVolume=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set PCM volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -183,6 +189,40 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
 // This receive UNICENS events
 CTLP_CAPI(Events, source, argsJ, queryJ)
 {
+	uint16_t node = 0U;
+	bool available = false;
+        bool error = false;
+        json_object *j_tmp = NULL;
+        
+        if (json_object_object_get_ex(queryJ, "node", &j_tmp)) {
+            node = (uint16_t)json_object_get_int(j_tmp);
+        }
+        else {
+            error = true;
+        }
+        
+        if (json_object_object_get_ex(queryJ, "available", &j_tmp)) {
+            available = (bool)json_object_get_boolean(j_tmp);
+        }
+        else {
+            error = true;
+        }
+        
+        if(!error) {
+            AFB_ApiNotice(source->api, "Node-Availability: node=0x%03X, available=%d", node, available);
+            wrap_volume_node_avail(source->api, node, available);
+	}
+        else {
+            AFB_ApiError(source->api, "Hal-Unicens: Failed to parse events query=%s", json_object_to_json_string(queryJ));
+        }
+
+	return 0;
+}
+
+// This is the former implementation receiving UNICENS events,
+// wrap_json_unpack() seems not to work as expected.
+/*CTLP_CAPI(Events, source, argsJ, queryJ)
+{
 	int node;
 	int available;
 
@@ -192,4 +232,4 @@ CTLP_CAPI(Events, source, argsJ, queryJ)
 	}
 
 	return 0;
-}
+}*/
