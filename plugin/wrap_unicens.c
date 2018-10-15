@@ -116,33 +116,31 @@ extern int wrap_ucs_sendmessage_sync(uint16_t src_addr, uint16_t msg_id, uint8_t
     int msgid = (int)msg_id;
     size_t data_size = (size_t)data_sz;
 
-    AFB_ApiNotice(unicensHalApiHandle, "--- HAL triggering send message ---");
-    goto OnErrorExit;
-    
-    
+    AFB_ApiNotice(unicensHalApiHandle, "--- HAL triggering send message ---");    
+
     /* skip data attribute if possible, wrap_json_unpack may fail to deal with
      * an empty Base64 string */
     if (data_size > 0)
         wrap_json_pack(&j_query, "{s:i, s:i, s:Y}", "node", node, "msgid", msgid, "data", data_ptr, data_size);
     else
         wrap_json_pack(&j_query, "{s:i, s:i}", "node", node, "msgid", msgid);
-    
+
     AFB_ApiNotice(unicensHalApiHandle, "wrap_ucs_sendmessage: jquery=%s", json_object_to_json_string(j_query));
 
-    /* err = AFB_ServiceSync(unicensHalApiHandle, "UNICENS", "sendmessage", j_query, &j_response); */
+    err = AFB_ServiceSync(unicensHalApiHandle, "UNICENS", "sendmessage", j_query, &j_response);
 
-    if (err) {
-        AFB_ERROR("Failed to call wrap_ucs_sendmessage");
-        goto OnErrorExit;
+    if (err != 0) {
+        AFB_ApiError(unicensHalApiHandle, "Failed to call wrap_ucs_sendmessage ret=%d", err);
     }
     else {
-        AFB_INFO("Called wrap_ucs_sendmessage, res=%s", json_object_to_json_string(j_response));
+        AFB_ApiNotice(unicensHalApiHandle, "Called wrap_ucs_sendmessage, successful");
+    }
+
+    if (j_response != NULL) {
+        AFB_ApiNotice(unicensHalApiHandle, "wrap_ucs_sendmessage, response=%s", json_object_to_json_string(j_response));
         json_object_put(j_response);
     }
 
-    //j_query = NULL;
-
-OnErrorExit:
     return err;
 }
 
