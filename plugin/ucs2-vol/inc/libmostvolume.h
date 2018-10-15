@@ -63,9 +63,12 @@ typedef int (*lib_most_volume_writei2c_cb_t)(uint16_t node, uint8_t *data_ptr, u
                                             lib_most_volume_writei2c_result_cb_t result_fptr,
                                             void *result_user_ptr);
 
+typedef int (*lib_most_volume_sendmessage_cb_t)(uint16_t node, uint16_t msgid, uint8_t *data_ptr, uint8_t data_sz);
+
 typedef struct lib_most_volume_init_ {
     lib_most_volume_service_cb_t  service_cb;
     lib_most_volume_writei2c_cb_t writei2c_cb;
+    lib_most_volume_sendmessage_cb_t sendmsg_cb;
 
 } lib_most_volume_init_t;
 

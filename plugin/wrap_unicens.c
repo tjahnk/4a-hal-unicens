@@ -108,8 +108,45 @@ extern int wrap_ucs_i2cwrite_sync(AFB_ApiT apiHandle, uint16_t node, uint8_t *da
 	return 0;
 }
 
-/* ---------------------------- ASYNCHRONOUS API ---------------------------- */
+extern int wrap_ucs_sendmessage_sync(uint16_t src_addr, uint16_t msg_id, uint8_t *data_ptr, uint8_t data_sz) {
 
+    json_object *j_query, *j_response = NULL;
+    int err = 1;
+    int node = (int)src_addr;
+    int msgid = (int)msg_id;
+    size_t data_size = (size_t)data_sz;
+
+    AFB_ApiNotice(unicensHalApiHandle, "--- HAL triggering send message ---");
+    goto OnErrorExit;
+    
+    
+    /* skip data attribute if possible, wrap_json_unpack may fail to deal with
+     * an empty Base64 string */
+    if (data_size > 0)
+        wrap_json_pack(&j_query, "{s:i, s:i, s:Y}", "node", node, "msgid", msgid, "data", data_ptr, data_size);
+    else
+        wrap_json_pack(&j_query, "{s:i, s:i}", "node", node, "msgid", msgid);
+    
+    AFB_ApiNotice(unicensHalApiHandle, "wrap_ucs_sendmessage: jquery=%s", json_object_to_json_string(j_query));
+
+    /* err = AFB_ServiceSync(unicensHalApiHandle, "UNICENS", "sendmessage", j_query, &j_response); */
+
+    if (err) {
+        AFB_ERROR("Failed to call wrap_ucs_sendmessage");
+        goto OnErrorExit;
+    }
+    else {
+        AFB_INFO("Called wrap_ucs_sendmessage, res=%s", json_object_to_json_string(j_response));
+        json_object_put(j_response);
+    }
+
+    //j_query = NULL;
+
+OnErrorExit:
+    return err;
+}
+
+/* ---------------------------- ASYNCHRONOUS API ---------------------------- */
 static void wrap_ucs_i2cwrite_cb(void *closure, int status, struct json_object *j_result, AFB_ApiT apiHandle)
 {
 	async_job_t *job_ptr;
@@ -172,3 +209,4 @@ extern int wrap_ucs_i2cwrite(uint16_t node,
 	AFB_ServiceCall(unicensHalApiHandle, "UNICENS", "writei2c", j_query, wrap_ucs_i2cwrite_cb, job_ptr);
 	return 0;
 }
+

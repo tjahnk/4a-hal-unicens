@@ -41,3 +41,5 @@ extern int wrap_ucs_i2cwrite(uint16_t node,
 /* Synchronous API: functions */
 extern int wrap_ucs_subscribe_sync(AFB_ApiT apiHandle);
 extern int wrap_ucs_i2cwrite_sync(AFB_ApiT apiHandle, uint16_t node, uint8_t *data_ptr, uint8_t data_sz);
+extern int wrap_ucs_sendmessage_sync(uint16_t src_addr, uint16_t msg_id, uint8_t *data_ptr, uint8_t data_sz);
+

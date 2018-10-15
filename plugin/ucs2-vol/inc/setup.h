@@ -51,6 +51,8 @@ private:
     CDeviceValue _volume_amp_272_m;
     CDeviceValue _volume_amp_272_l;
     CDeviceValue _volume_amp_272_r;
+    
+    CDeviceValue _volume_amp_510_m;
 
     CDeviceContainer _value_container;
     lib_most_volume_init_t init_data;

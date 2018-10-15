@@ -42,7 +42,7 @@ static uint8_t initialized = 0;
 // Call at initialisation time
 CTLP_ONLOAD(plugin, callbacks)
 {
-	AFB_ApiNotice(plugin->api, "Hal-Unicens Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
+	AFB_ApiNotice(plugin->api, "OWN REPO HAL !!! Hal-Unicens Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
 
 	unicensHalApiHandle = plugin->api;
 
@@ -55,7 +55,7 @@ CTLP_CAPI(MasterVol, source, argsJ, queryJ)
 
 	json_object *valueJ;
         
-        AFB_ApiNotice(source->api, "Hal-Unicens: MasterVolume=%s", json_object_to_json_string(queryJ));
+        AFB_ApiNotice(source->api, "OWN REPO HAL !!! Hal-Unicens: MasterVolume=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -84,7 +84,7 @@ CTLP_CAPI(MasterSwitch, source, argsJ, queryJ)
 	json_bool master_switch;
 	json_object *valueJ;
         
-        AFB_ApiNotice(source->api, "Hal-Unicens: MasterSwitch=%s", json_object_to_json_string(queryJ));
+        AFB_ApiNotice(source->api, "OWN REPO HAL !!! Hal-Unicens: MasterSwitch=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master switch, value=%s", __func__, json_object_get_string(queryJ));
@@ -125,7 +125,7 @@ CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 
 	json_object *valueJ;
         
-        AFB_ApiNotice(source->api, "Hal-Unicens: PCMVolume=%s", json_object_to_json_string(queryJ));
+        AFB_ApiNotice(source->api, "OWN REPO HAL !!! Hal-Unicens: PCMVolume=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set PCM volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -160,26 +160,26 @@ CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 CTLP_CAPI(Init, source, argsJ, queryJ)
 {
 	int err = 0;
-	int pcm_volume[PCM_MAX_CHANNELS] = { 80, 80, 80, 80, 80, 80 };
+	//int pcm_volume[PCM_MAX_CHANNELS] = { 80, 80, 80, 80, 80, 80 };
 
-	AFB_ApiNotice(source->api, "Initializing HAL-MOST-UNICENS-BINDING");
-
+	AFB_ApiNotice(source->api, "OWN REPO HAL !!! Initializing HAL-MOST-UNICENS-BINDING");
+        
+	if((err = wrap_volume_init())) {
+		AFB_ApiError(source->api, "Failed to initialize wrapper for volume library");
+		return err;
+	}
+        
 	if((err = wrap_ucs_subscribe_sync(source->api))) {
 		AFB_ApiError(source->api, "Failed to subscribe to UNICENS binding");
 		return err;
 	}
 
-	if((err = wrap_volume_init())) {
-		AFB_ApiError(source->api, "Failed to initialize wrapper for volume library");
-		return err;
-	}
-
 	// Set output volume to pre-defined level in order to
 	// avoid muted volume to be persistent after boot.
-	wrap_volume_master(source->api, 80);
-	wrap_volume_pcm(source->api, pcm_volume, PCM_MAX_CHANNELS);
+	//wrap_volume_master(source->api, 80);
+	//wrap_volume_pcm(source->api, pcm_volume, PCM_MAX_CHANNELS);
 
-	AFB_ApiNotice(source->api, "Initializing HAL-MOST-UNICENS-BINDING done..");
+	AFB_ApiNotice(source->api, "OWN REPO HAL !!! Initializing HAL-MOST-UNICENS-BINDING done..");
 
 	initialized = 1;
 
@@ -191,45 +191,35 @@ CTLP_CAPI(Events, source, argsJ, queryJ)
 {
 	uint16_t node = 0U;
 	bool available = false;
-        bool error = false;
+        int error = false;
         json_object *j_tmp = NULL;
+        
+        if (initialized == 0) {
+            AFB_ApiError(source->api, "Hal-Unicens: Not initialized while receiving event query=%s", json_object_to_json_string(queryJ));
+            return 0;
+        }
         
         if (json_object_object_get_ex(queryJ, "node", &j_tmp)) {
             node = (uint16_t)json_object_get_int(j_tmp);
         }
         else {
-            error = true;
+            error = -1;
         }
         
         if (json_object_object_get_ex(queryJ, "available", &j_tmp)) {
             available = (bool)json_object_get_boolean(j_tmp);
         }
         else {
-            error = true;
+            error = -2;
         }
         
         if(!error) {
-            AFB_ApiNotice(source->api, "Node-Availability: node=0x%03X, available=%d", node, available);
+            AFB_ApiNotice(source->api, "OWN REPO HAL !!! Node-Availability: node=0x%03X, available=%d", node, available);
             wrap_volume_node_avail(source->api, node, available);
 	}
         else {
             AFB_ApiError(source->api, "Hal-Unicens: Failed to parse events query=%s", json_object_to_json_string(queryJ));
         }
 
-	return 0;
+	return error;
 }
-
-// This is the former implementation receiving UNICENS events,
-// wrap_json_unpack() seems not to work as expected.
-/*CTLP_CAPI(Events, source, argsJ, queryJ)
-{
-	int node;
-	int available;
-
-	if(wrap_json_unpack(queryJ, "{s:i,s:b}", "node", &node, "available", &available)) {
-		AFB_ApiNotice(source->api, "Node-Availability: node=0x%03X, available=%d", node, available);
-		wrap_volume_node_avail(source->api, node, available);
-	}
-
-	return 0;
-}*/

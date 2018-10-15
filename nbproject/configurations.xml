@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="afb-helpers">
+        <in>curl-wrap.c</in>
+        <in>escape.c</in>
+        <in>filescan-utils.c</in>
+        <in>qafbwebsocketclient.cpp</in>
+        <in>wrap-json.c</in>
+      </df>
+      <df name="app-controller">
+        <df name="ctl-lib">
+          <in>ctl-action.c</in>
+          <in>ctl-config.c</in>
+          <in>ctl-control.c</in>
+          <in>ctl-event.c</in>
+          <in>ctl-lua-utils.c</in>
+          <in>ctl-lua.c</in>
+          <in>ctl-onload.c</in>
+          <in>ctl-plugin.c</in>
+          <in>ctl-timer.c</in>
+        </df>
+      </df>
+      <df name="plugin">
+        <df name="ucs2-vol">
+          <df name="src">
+            <in>device_container.cpp</in>
+            <in>device_value.cpp</in>
+            <in>libmostvolume.cpp</in>
+            <in>setup.cpp</in>
+          </df>
+        </df>
+        <in>most_unicens.c</in>
+        <in>wrap_unicens.c</in>
+        <in>wrap_volume.c</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>CMakeLists.txt</itemPath>
+      <itemPath>Makefile</itemPath>
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-O3 -fPIC -fPIC -O2"/>
+        <element flagsID="1" commonFlags="-std=c++14"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>./build</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>./build</preBuildCommandWorkingDir>
+          <preBuildCommand>cmake ..</preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="afb-helpers/curl-wrap.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="afb-helpers/escape.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <incDir>
+            <pElem>/usr/include/json-c</pElem>
+            <pElem>/opt/AGL/include</pElem>
+            <pElem>/usr/include/p11-kit-1</pElem>
+            <pElem>/usr/include/uuid</pElem>
+            <pElem>/usr/include/alsa</pElem>
+            <pElem>/usr/include/lua5.3</pElem>
+            <pElem>afb-helpers</pElem>
+            <pElem>build/afb-helpers</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>AFB_BINDING_VERSION=3</Elem>
+            <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
+            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
+            <Elem>NDEBUG</Elem>
+            <Elem>SUSE_LUA_INCDIR</Elem>
+            <Elem>_FORTIFY_SOURCE=2</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="afb-helpers/filescan-utils.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <incDir>
+            <pElem>/usr/include/json-c</pElem>
+            <pElem>/opt/AGL/include</pElem>
+            <pElem>/usr/include/p11-kit-1</pElem>
+            <pElem>/usr/include/uuid</pElem>
+            <pElem>/usr/include/alsa</pElem>
+            <pElem>/usr/include/lua5.3</pElem>
+            <pElem>afb-helpers</pElem>
+            <pElem>build/afb-helpers</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>AFB_BINDING_VERSION=3</Elem>
+            <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
+            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
+            <Elem>NDEBUG</Elem>
+            <Elem>SUSE_LUA_INCDIR</Elem>
+            <Elem>_FORTIFY_SOURCE=2</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="afb-helpers/qafbwebsocketclient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="11">
+        <ccTool flags="1">
+        </ccTool>
+      </item>
+      <item path="afb-helpers/wrap-json.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <incDir>
+            <pElem>/usr/include/json-c</pElem>
+            <pElem>/opt/AGL/include</pElem>
+            <pElem>/usr/include/p11-kit-1</pElem>
+            <pElem>/usr/include/uuid</pElem>
+            <pElem>/usr/include/alsa</pElem>
+            <pElem>/usr/include/lua5.3</pElem>
+            <pElem>afb-helpers</pElem>
+            <pElem>build/afb-helpers</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>AFB_BINDING_VERSION=3</Elem>
+            <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
+            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
+            <Elem>NDEBUG</Elem>
+            <Elem>SUSE_LUA_INCDIR</Elem>
+            <Elem>_FORTIFY_SOURCE=2</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-action.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-config.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-control.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-event.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-lua-utils.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-lua.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-onload.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-plugin.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="app-controller/ctl-lib/ctl-timer.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <folder path="0/app-controller">
+        <cTool>
+          <incDir>
+            <pElem>/usr/include/json-c</pElem>
+            <pElem>/opt/AGL/include</pElem>
+            <pElem>/usr/include/p11-kit-1</pElem>
+            <pElem>/usr/include/uuid</pElem>
+            <pElem>/usr/include/alsa</pElem>
+            <pElem>/usr/include/lua5.3</pElem>
+            <pElem>app-controller/ctl-lib</pElem>
+            <pElem>afb-helpers</pElem>
+            <pElem>build/app-controller/ctl-lib</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>AFB_BINDING_VERSION=3</Elem>
+            <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
+            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_SUPPORT_LUA</Elem>
+            <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
+            <Elem>NDEBUG</Elem>
+            <Elem>SUSE_LUA_INCDIR</Elem>
+            <Elem>_FORTIFY_SOURCE=2</Elem>
+          </preprocessorList>
+        </cTool>
+      </folder>
+      <folder path="0/plugin">
+        <cTool>
+          <incDir>
+            <pElem>/usr/include/json-c</pElem>
+            <pElem>/opt/AGL/include</pElem>
+            <pElem>/usr/include/p11-kit-1</pElem>
+            <pElem>/usr/include/uuid</pElem>
+            <pElem>/usr/include/alsa</pElem>
+            <pElem>/usr/include/lua5.3</pElem>
+            <pElem>app-controller/ctl-lib</pElem>
+            <pElem>4a-hal/4a-hal-controllers</pElem>
+            <pElem>4a-hal/4a-hal-manager</pElem>
+            <pElem>4a-hal/4a-hal-utilities</pElem>
+            <pElem>plugin/ucs2-vol/inc</pElem>
+            <pElem>afb-helpers</pElem>
+            <pElem>build/plugin</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>AFB_BINDING_VERSION=3</Elem>
+            <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
+            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
+            <Elem>NDEBUG</Elem>
+            <Elem>SUSE_LUA_INCDIR</Elem>
+            <Elem>_FORTIFY_SOURCE=2</Elem>
+            <Elem>hal_unicens_EXPORTS</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/include/json-c</pElem>
+            <pElem>/opt/AGL/include</pElem>
+            <pElem>/usr/include/p11-kit-1</pElem>
+            <pElem>/usr/include/uuid</pElem>
+            <pElem>/usr/include/alsa</pElem>
+            <pElem>/usr/include/lua5.3</pElem>
+            <pElem>plugin/ucs2-vol/inc</pElem>
+            <pElem>build/plugin/ucs2-vol/src</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>AFB_BINDING_VERSION=3</Elem>
+            <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
+            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
+            <Elem>NDEBUG</Elem>
+            <Elem>SUSE_LUA_INCDIR</Elem>
+            <Elem>_FORTIFY_SOURCE=2</Elem>
+          </preprocessorList>
+        </ccTool>
+      </folder>
+      <item path="plugin/most_unicens.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="plugin/ucs2-vol/src/device_container.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="plugin/ucs2-vol/src/device_value.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="plugin/ucs2-vol/src/libmostvolume.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="plugin/ucs2-vol/src/setup.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="plugin/wrap_unicens.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="plugin/wrap_volume.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -119,18 +119,25 @@ void CDeviceContainer::Update()
 
         if (_values_pptr[_idx_processing]->RequiresUpdate())
         {
-            if (_values_pptr[_idx_processing]->FireUpdateMessage(this->_init_ptr->writei2c_cb,
-                                                                 &OnI2cResult,
-                                                                 this))
+            if (_values_pptr[_idx_processing]->GetType() == DEVICE_VAL_FIBERDYNE_MASTER)
             {
-                this->_tx_busy = true;
-                error = false;
-                break;
+                _values_pptr[_idx_processing]->FireControlMessage(this->_init_ptr->sendmsg_cb);
             }
             else
             {
-                error = true;
-                break;
+                if (_values_pptr[_idx_processing]->FireUpdateMessage(this->_init_ptr->writei2c_cb,
+                                                                     &OnI2cResult,
+                                                                     this))
+                {
+                    this->_tx_busy = true;
+                    error = false;
+                    break;
+                }
+                else
+                {
+                    error = true;
+                    break;
+                }
             }
         }
     }

@@ -32,11 +32,12 @@
 #define CONTROL_CH_1    0x08U
 #define CONTROL_CH_2    0x09U
 
-CDeviceValue::CDeviceValue(uint16_t address, DeviceValueType type, uint16_t key)
+CDeviceValue::CDeviceValue(uint16_t address, DeviceValueType type, uint16_t key, bool is_i2c)
 {
     this->_is_available = false;
     this->_is_busy = false;
     this->_address = address;
+    this->_is_i2c = is_i2c;
     this->_target_value = 0x01u;
     this->_actual_value = 0x01u;
 
@@ -49,7 +50,11 @@ CDeviceValue::CDeviceValue(uint16_t address, DeviceValueType type, uint16_t key)
     _tx_payload[0] = CONTROL_MASTER;// 7: master, 8: channel 1, 9: Channel 2
     _tx_payload[1] = MUTE_VALUE_HB; //HB:Volume
     _tx_payload[2] = MUTE_VALUE_LB; //LB:Volume
-    _tx_payload_sz = 3u;
+
+    if (type == DEVICE_VAL_FIBERDYNE_MASTER)
+        _tx_payload_sz = 2u;
+    else
+        _tx_payload_sz = 3u;
 }
 
 CDeviceValue::~CDeviceValue()
@@ -59,6 +64,14 @@ CDeviceValue::~CDeviceValue()
 void CDeviceValue::ApplyMostValue(uint8_t value, DeviceValueType type, uint8_t tx_payload[])
 {
     uint16_t tmp = MUTE_VALUE;
+
+    if (type == DEVICE_VAL_FIBERDYNE_MASTER)
+    {
+        tx_payload[0] = 0x00U;
+        tx_payload[1] = value;
+        
+        return;
+    }   
 
     switch (type)
     {
@@ -95,6 +108,20 @@ bool CDeviceValue::RequiresUpdate()
     }
 
     return false;
+}
+
+bool CDeviceValue::FireControlMessage(lib_most_volume_sendmessage_cb_t sendmsg_fptr)
+{
+    ApplyMostValue(this->_target_value, _type, _tx_payload);
+
+    if (this->_is_available && !this->_is_busy)
+    {
+        sendmsg_fptr(this->_address, 0x100U, _tx_payload, _tx_payload_sz);
+        
+        this->_actual_value = this->_target_value;
+    }
+
+    return true;
 }
 
 bool CDeviceValue::FireUpdateMessage(lib_most_volume_writei2c_cb_t writei2c_fptr,

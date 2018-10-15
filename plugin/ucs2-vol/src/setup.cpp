@@ -43,18 +43,19 @@ void CSetup::Release() {
 }
 
 CSetup::CSetup()
-    :   _volume_amp_270_m(0x270U, DEVICE_VAL_MASTER, LIB_MOST_VOLUME_MASTER),
-        _volume_amp_270_l(0x270U, DEVICE_VAL_LEFT, LIB_MOST_VOLUME_CH_FRONT_LEFT),
-        _volume_amp_270_r(0x270U, DEVICE_VAL_RIGHT, LIB_MOST_VOLUME_CH_FRONT_RIGHT),
-        _volume_amp_271_m(0x271U, DEVICE_VAL_MASTER, LIB_MOST_VOLUME_MASTER),
-        _volume_amp_271_l(0x271U, DEVICE_VAL_LEFT, LIB_MOST_VOLUME_CH_REAR_LEFT),
-        _volume_amp_271_r(0x271U, DEVICE_VAL_RIGHT, LIB_MOST_VOLUME_CH_REAR_RIGHT),
-        _volume_amp_272_m(0x272U, DEVICE_VAL_MASTER, LIB_MOST_VOLUME_MASTER),
-        _volume_amp_272_l(0x272U, DEVICE_VAL_LEFT, LIB_MOST_VOLUME_CH_CENTER),
-        _volume_amp_272_r(0x272U, DEVICE_VAL_RIGHT, LIB_MOST_VOLUME_CH_SUB),
+    :   _volume_amp_270_m(0x270U, DEVICE_VAL_MASTER, LIB_MOST_VOLUME_MASTER, true),
+        _volume_amp_270_l(0x270U, DEVICE_VAL_LEFT, LIB_MOST_VOLUME_CH_FRONT_LEFT, true),
+        _volume_amp_270_r(0x270U, DEVICE_VAL_RIGHT, LIB_MOST_VOLUME_CH_FRONT_RIGHT, true),
+        _volume_amp_271_m(0x271U, DEVICE_VAL_MASTER, LIB_MOST_VOLUME_MASTER, true),
+        _volume_amp_271_l(0x271U, DEVICE_VAL_LEFT, LIB_MOST_VOLUME_CH_REAR_LEFT, true),
+        _volume_amp_271_r(0x271U, DEVICE_VAL_RIGHT, LIB_MOST_VOLUME_CH_REAR_RIGHT, true),
+        _volume_amp_272_m(0x272U, DEVICE_VAL_MASTER, LIB_MOST_VOLUME_MASTER, true),
+        _volume_amp_272_l(0x272U, DEVICE_VAL_LEFT, LIB_MOST_VOLUME_CH_CENTER, true),
+        _volume_amp_272_r(0x272U, DEVICE_VAL_RIGHT, LIB_MOST_VOLUME_CH_SUB, true),
+        _volume_amp_510_m(0x510U, DEVICE_VAL_FIBERDYNE_MASTER, LIB_MOST_VOLUME_MASTER, false),
         _value_container()
 {
-    static CDeviceValue* value_list[9] = {  &_volume_amp_270_m,
+    static CDeviceValue* value_list[10] = {  &_volume_amp_270_m,
                                             &_volume_amp_270_l,
                                             &_volume_amp_270_r,
                                             &_volume_amp_271_m,
@@ -62,9 +63,10 @@ CSetup::CSetup()
                                             &_volume_amp_271_r,
                                             &_volume_amp_272_m,
                                             &_volume_amp_272_l,
-                                            &_volume_amp_272_r};
+                                            &_volume_amp_272_r,
+                                            &_volume_amp_510_m};
 
-    _value_container.RegisterValues(value_list, 9U);
+    _value_container.RegisterValues(value_list, 10U);
 }
 
 CSetup::~CSetup()

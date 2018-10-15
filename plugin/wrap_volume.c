@@ -87,7 +87,8 @@ extern int wrap_volume_init(void)
 	lib_most_volume_init_t mv_init;
 
 	mv_init.writei2c_cb = &wrap_ucs_i2cwrite;
-	mv_init.service_cb = wrap_volume_service_cb;
+	mv_init.service_cb = &wrap_volume_service_cb;
+	mv_init.sendmsg_cb = &wrap_ucs_sendmessage_sync;
 
 	ret = lib_most_volume_init(&mv_init);
 

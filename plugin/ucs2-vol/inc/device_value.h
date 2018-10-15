@@ -53,13 +53,14 @@ struct STxMessage {
 enum DeviceValueType {
     DEVICE_VAL_MASTER = 0,
     DEVICE_VAL_LEFT = 1,
-    DEVICE_VAL_RIGHT = 2
+    DEVICE_VAL_RIGHT = 2,
+    DEVICE_VAL_FIBERDYNE_MASTER = 3
 
 };
 
 class CDeviceValue {
 public:
-    CDeviceValue(uint16_t address, DeviceValueType type, uint16_t key);
+    CDeviceValue(uint16_t address, DeviceValueType type, uint16_t key, bool is_i2c);
     virtual ~CDeviceValue();
 
     uint16_t GetKey(){return _key;}
@@ -72,7 +73,8 @@ public:
     bool FireUpdateMessage(lib_most_volume_writei2c_cb_t writei2c_fptr,
                            lib_most_volume_writei2c_result_cb_t result_fptr,
                            void *result_user_ptr);// fires message & updates actual value
-
+    bool FireControlMessage(lib_most_volume_sendmessage_cb_t sendmsg_fptr);
+    
     void SetAvailable(bool active){this->_is_available = active; _actual_value = 0x01u;}
     bool IsAvailable() {return this->_is_available;}
     uint16_t GetAddress() {return this->_address;}
@@ -84,6 +86,7 @@ private:
 
     bool     _is_available;     // related node is available
     bool     _is_busy;          // do not update while busy
+    bool     _is_i2c;
     DeviceValueType _type;      // determines the remote i2c command
     uint16_t _key;              // lookup key
     uint16_t _address;          // target node/group address
