@@ -250,9 +250,6 @@
             <pElem>/usr/include/alsa</pElem>
             <pElem>/usr/include/lua5.3</pElem>
             <pElem>app-controller/ctl-lib</pElem>
-            <pElem>4a-hal/4a-hal-controllers</pElem>
-            <pElem>4a-hal/4a-hal-manager</pElem>
-            <pElem>4a-hal/4a-hal-utilities</pElem>
             <pElem>plugin/ucs2-vol/inc</pElem>
             <pElem>afb-helpers</pElem>
             <pElem>build/plugin</pElem>

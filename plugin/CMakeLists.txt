@@ -45,8 +45,8 @@ PROJECT_TARGET_ADD(hal-unicens)
 
 		target_include_directories(${TARGET_NAME}
 			PRIVATE "${CMAKE_SOURCE_DIR}/app-controller/ctl-lib"
-			PRIVATE "${CMAKE_SOURCE_DIR}/4a-hal/4a-hal-controllers"
-			PRIVATE "${CMAKE_SOURCE_DIR}/4a-hal/4a-hal-manager"
-			PRIVATE "${CMAKE_SOURCE_DIR}/4a-hal/4a-hal-utilities"
+			#PRIVATE "${CMAKE_SOURCE_DIR}/4a-hal/4a-hal-controllers"
+			#PRIVATE "${CMAKE_SOURCE_DIR}/4a-hal/4a-hal-manager"
+			#PRIVATE "${CMAKE_SOURCE_DIR}/4a-hal/4a-hal-utilities"
 			PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/ucs2-vol/inc"
 		)

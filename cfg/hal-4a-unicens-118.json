@@ -5,14 +5,14 @@
         "version": "0.9",
         "api": "4a-hal-unicens",
         "require": [ "alsacore", "UNICENS", "smixer" ],
-        "info": "4a hal for MICROCHIP MOST sound card controlled by UNICENS binding",
+        "info": "4a HAL for UNICENS INICnet OS81118",
         "author": "Jonathan Aillet",
         "date": "2018-06-15"
     },
     "resources": [
         {
             "uid": "hal-unicens",
-            "info": "Unicens hal plugin to handle communication with unicens binder",
+            "info": "UNICENS HAL plugin",
             "spath": "./package/lib/plugins:./package/var:./lib/plugins:./var:/usr/libexec/agl/4a-hal",
             "libs": ["hal-unicens.ctlso"]
         }
