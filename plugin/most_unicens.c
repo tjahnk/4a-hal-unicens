@@ -42,7 +42,7 @@ static uint8_t initialized = 0;
 // Call at initialisation time
 CTLP_ONLOAD(plugin, callbacks)
 {
-	AFB_ApiNotice(plugin->api, "OWN REPO HAL !!! Hal-Unicens Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
+	AFB_ApiNotice(plugin->api, "4A-HAL-UNICENS: Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
 
 	unicensHalApiHandle = plugin->api;
 
@@ -55,7 +55,7 @@ CTLP_CAPI(MasterVol, source, argsJ, queryJ)
 
 	json_object *valueJ;
         
-        AFB_ApiNotice(source->api, "OWN REPO HAL !!! Hal-Unicens: MasterVolume=%s", json_object_to_json_string(queryJ));
+        AFB_ApiNotice(source->api, "4A-HAL-UNICENS: MasterVolume=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -84,7 +84,7 @@ CTLP_CAPI(MasterSwitch, source, argsJ, queryJ)
 	json_bool master_switch;
 	json_object *valueJ;
         
-        AFB_ApiNotice(source->api, "OWN REPO HAL !!! Hal-Unicens: MasterSwitch=%s", json_object_to_json_string(queryJ));
+        AFB_ApiNotice(source->api, "4A-HAL-UNICENS: MasterSwitch=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master switch, value=%s", __func__, json_object_get_string(queryJ));
@@ -125,7 +125,7 @@ CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 
 	json_object *valueJ;
         
-        AFB_ApiNotice(source->api, "OWN REPO HAL !!! Hal-Unicens: PCMVolume=%s", json_object_to_json_string(queryJ));
+        AFB_ApiNotice(source->api, "4A-HAL-UNICENS: PCMVolume=%s", json_object_to_json_string(queryJ));
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set PCM volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -162,7 +162,7 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
 	int err = 0;
 	//int pcm_volume[PCM_MAX_CHANNELS] = { 80, 80, 80, 80, 80, 80 };
 
-	AFB_ApiNotice(source->api, "OWN REPO HAL !!! Initializing HAL-MOST-UNICENS-BINDING");
+	AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing 4a plugin");
         
 	if((err = wrap_volume_init())) {
 		AFB_ApiError(source->api, "Failed to initialize wrapper for volume library");
@@ -179,7 +179,7 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
 	//wrap_volume_master(source->api, 80);
 	//wrap_volume_pcm(source->api, pcm_volume, PCM_MAX_CHANNELS);
 
-	AFB_ApiNotice(source->api, "OWN REPO HAL !!! Initializing HAL-MOST-UNICENS-BINDING done..");
+	AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing plugin done..");
 
 	initialized = 1;
 
@@ -195,7 +195,7 @@ CTLP_CAPI(Events, source, argsJ, queryJ)
         json_object *j_tmp = NULL;
         
         if (initialized == 0) {
-            AFB_ApiError(source->api, "Hal-Unicens: Not initialized while receiving event query=%s", json_object_to_json_string(queryJ));
+            AFB_ApiError(source->api, "4A-HAL-UNICENS: Not initialized while receiving event query=%s", json_object_to_json_string(queryJ));
             return 0;
         }
         
@@ -214,11 +214,11 @@ CTLP_CAPI(Events, source, argsJ, queryJ)
         }
         
         if(!error) {
-            AFB_ApiNotice(source->api, "OWN REPO HAL !!! Node-Availability: node=0x%03X, available=%d", node, available);
+            AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Node-Availability: node=0x%03X, available=%d", node, available);
             wrap_volume_node_avail(source->api, node, available);
 	}
         else {
-            AFB_ApiError(source->api, "Hal-Unicens: Failed to parse events query=%s", json_object_to_json_string(queryJ));
+            AFB_ApiError(source->api, "4A-HAL-UNICENS: Failed to parse events query=%s", json_object_to_json_string(queryJ));
         }
 
 	return error;
