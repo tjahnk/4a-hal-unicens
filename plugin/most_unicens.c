@@ -41,11 +41,10 @@ static uint8_t initialized = 0;
 
 // Call at initialisation time
 CTLP_ONLOAD(plugin, callbacks)
-{
-	AFB_ApiNotice(plugin->api, "4A-HAL-UNICENS: Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
-
-	unicensHalApiHandle = plugin->api;
-
+{        
+        unicensHalApiHandle = plugin->api;
+	AFB_ApiNotice(unicensHalApiHandle, "4A-HAL-UNICENS: Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
+        
 	return 0;
 }
 
@@ -56,6 +55,9 @@ CTLP_CAPI(MasterVol, source, argsJ, queryJ)
 	json_object *valueJ;
         
         AFB_ApiNotice(source->api, "4A-HAL-UNICENS: MasterVolume=%s", json_object_to_json_string(queryJ));
+        
+        //debug
+        return 0;
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -85,6 +87,9 @@ CTLP_CAPI(MasterSwitch, source, argsJ, queryJ)
 	json_object *valueJ;
         
         AFB_ApiNotice(source->api, "4A-HAL-UNICENS: MasterSwitch=%s", json_object_to_json_string(queryJ));
+        
+        //debug
+        return 0;
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master switch, value=%s", __func__, json_object_get_string(queryJ));
@@ -126,6 +131,9 @@ CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 	json_object *valueJ;
         
         AFB_ApiNotice(source->api, "4A-HAL-UNICENS: PCMVolume=%s", json_object_to_json_string(queryJ));
+        
+        //debug
+        return 0;
 
 	if(! initialized) {
 		AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set PCM volume, value=%s", __func__, json_object_get_string(queryJ));
@@ -164,6 +172,9 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
 
 	AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing 4a plugin");
         
+        // debug
+        return 0;
+#if 1
 	if((err = wrap_volume_init())) {
 		AFB_ApiError(source->api, "Failed to initialize wrapper for volume library");
 		return err;
@@ -178,9 +189,8 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
 	// avoid muted volume to be persistent after boot.
 	//wrap_volume_master(source->api, 80);
 	//wrap_volume_pcm(source->api, pcm_volume, PCM_MAX_CHANNELS);
-
+#endif
 	AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing plugin done..");
-
 	initialized = 1;
 
 	return 0;
@@ -193,6 +203,9 @@ CTLP_CAPI(Events, source, argsJ, queryJ)
 	bool available = false;
         int error = false;
         json_object *j_tmp = NULL;
+        
+        //debug
+        return 0;
         
         if (initialized == 0) {
             AFB_ApiError(source->api, "4A-HAL-UNICENS: Not initialized while receiving event query=%s", json_object_to_json_string(queryJ));

@@ -5,7 +5,7 @@
         "version": "0.9",
         "api": "4a-hal-unicens",
         "require": [ "alsacore", "UNICENS", "smixer" ],
-        "info": "4a HAL for UNICENS INICnet OS81118",
+        "info": "4a HAL for UNICENS for OS81118",
         "author": "Jonathan Aillet",
         "date": "2018-06-15"
     },
@@ -76,6 +76,7 @@
     "halmixer": {
         "uid": "unicens",
         "mixerapi": "smixer",
+        "prefix": "ucs",
         "ramps": [
             {
                 "uid": "ramp-fast",
@@ -100,7 +101,8 @@
             "uid": "UNICENS",
             "path": "/dev/snd/by-id/usb-Microchip-SMSC_OS81118_0000-0000004C-02",
             "params": {
-                "rate": 48000
+                "rate": 48000,
+                "format": "S16_LE"
             },
             "sink": {
                 "channels": [
@@ -209,7 +211,8 @@
                 "volume": 60,
                 "mute": false,
                 "params": {
-                    "rate": 48000
+                    "rate": 48000,
+                    "format": "S16_LE"
                 }
             },
             {
@@ -219,7 +222,8 @@
                 "volume": 70,
                 "mute": false,
                 "params": {
-                    "rate": 48000
+                    "rate": 48000,
+                    "format": "S16_LE"
                 }
             },
             {
@@ -229,7 +233,31 @@
                 "volume": 60,
                 "mute": false,
                 "params": {
-                    "rate": 48000
+                    "rate": 48000,
+                    "format": "S16_LE"
+                }
+            },
+            {
+                "uid": "legacy",
+                "verb": "legacy",
+                "zone": "back-seats",
+                "source": "loop-legacy",
+                "volume": 50,
+                "mute": false,
+                "params": {
+                    "rate": 48000,
+                    "format": "S16_LE"
+                }
+            },
+            {
+                "uid": "radio_stream",
+                "verb": "radio_stream",
+                "zone": "full-stereo",
+                "volume": 70,
+                "mute": true,
+                "params": {
+                    "rate" : 48000,
+                    "format": "S16_LE"
                 }
             }
         ]
