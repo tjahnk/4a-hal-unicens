@@ -88,6 +88,7 @@ Abort_Exit:
 	return err;
 }
 
+#if 0
 CTLP_CAPI(MasterSwitch, source, argsJ, queryJ)
 {
 	json_bool master_switch;
@@ -134,6 +135,7 @@ Abort_Exit:
         
 	return err;
 }
+#endif
 
 CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 {
@@ -204,13 +206,11 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
 	// avoid muted volume to be persistent after boot.
 	//wrap_volume_master(source->api, 80);
 	wrap_volume_pcm(source->api, pcm_volume, PCM_MAX_CHANNELS);
-
-	AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing plugin done..");
 	initialized = 1;
         
 Abort_Exit:
         pthread_mutex_unlock(&mutex);
-
+        AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing plugin done, err=%d", err);
 	return err;
 }
 

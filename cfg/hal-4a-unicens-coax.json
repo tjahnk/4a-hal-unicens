@@ -99,7 +99,7 @@
         ],
         "playbacks" : {
             "uid": "UNICENS",
-            "path": "/dev/snd/by-id/usb-Microchip-SMSC_OS81118_0000-0000004C-02",
+            "cardid": "hw:ep016ch",
             "params": {
                 "rate": 48000,
                 "format": "S16_LE"
@@ -208,7 +208,7 @@
                 "uid": "multimedia",
                 "verb": "multimedia",
                 "zone": "full-stereo",
-                "volume": 60,
+                "volume": 70,
                 "mute": false,
                 "params": {
                     "rate": 48000,
@@ -230,7 +230,7 @@
                 "uid": "emergency",
                 "verb": "emergency",
                 "zone": "front-seats",
-                "volume": 60,
+                "volume": 70,
                 "mute": false,
                 "params": {
                     "rate": 48000,
@@ -240,9 +240,9 @@
             {
                 "uid": "legacy",
                 "verb": "legacy",
-                "zone": "back-seats",
+                "zone": "full-stereo",
                 "source": "loop-legacy",
-                "volume": 50,
+                "volume": 70,
                 "mute": false,
                 "params": {
                     "rate": 48000,
