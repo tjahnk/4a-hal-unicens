@@ -18,14 +18,14 @@
 
 # Project Info
 # ------------------
-set(PROJECT_NAME 4a-hal)
-set(PROJECT_PRETTY_NAME "4A-HAL")
-set(PROJECT_DESCRIPTION "Hardware Abastraction Layer for AGL Audio Advanced Architecture")
+set(PROJECT_NAME 4a-hal-unicens)
+set(PROJECT_PRETTY_NAME "4A-HAL-UNICENS")
+set(PROJECT_DESCRIPTION "Hardware Abastraction Layer for UNICENS/MLD")
 set(PROJECT_VERSION "0.9")
-set(PROJECT_URL "https://github.com/iotbzh/4a-hal-generic")
+set(PROJECT_URL "https://github.com/tjahnk/4a-hal-unicens")
 set(PROJECT_ICON "icon.png")
-set(PROJECT_AUTHOR "Jonathan Aillet")
-set(PROJECT_AUTHOR_MAIL "jonathan.aillet@iot.bzh")
+set(PROJECT_AUTHOR "Jonathan Aillet, Tobias Jahnke")
+set(PROJECT_AUTHOR_MAIL "jonathan.aillet@iot.bzh, tobias.jahnke@microchip.com")
 set(PROJECT_LICENSE "APL2.0")
 set(PROJECT_LANGUAGES "C")
 
@@ -132,7 +132,7 @@ set(CONTROL_SUPPORT_LUA 1 CACHE BOOL "Active or not LUA Support")
 add_definitions(-DCTL_PLUGIN_MAGIC=7053042648)
 add_definitions(-DCONTROL_CONFIG_PATH="${CMAKE_SOURCE_DIR}/conf.d/project/etc:${CMAKE_BINARY_DIR}/package/etc:${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}/etc")
 add_definitions(-DCONTROL_PLUGIN_PATH="${CMAKE_BINARY_DIR}/package/lib/plugins:${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}/lib/plugins")
-add_definitions(-DCONTROL_LUA_PATH="${CMAKE_SOURCE_DIR}/conf.d/project/lua.d:${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}/var")
+#add_definitions(-DCONTROL_LUA_PATH="${CMAKE_SOURCE_DIR}/conf.d/project/lua.d:${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}/var")
 add_definitions(-DAFB_BINDING_VERSION=3 -DAFB_BINDING_WANT_DYNAPI=1)
 
 # (BUG!!!) as PKG_CONFIG_PATH does not work [should be an env variable]
@@ -167,7 +167,7 @@ set(WIDGET_TYPE application/vnd.agl.service)
 # This is the file that will be executed, loaded,
 # at launch time by the application framework.
 #
-set(WIDGET_ENTRY_POINT lib/afb-4a-hal.so)
+#set(WIDGET_ENTRY_POINT lib/afb-4a-hal.so)
 
 # Optional dependencies order
 # ---------------------------

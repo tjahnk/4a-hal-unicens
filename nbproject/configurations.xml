@@ -92,9 +92,8 @@
           <preprocessorList>
             <Elem>AFB_BINDING_VERSION=3</Elem>
             <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
-            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
-            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
-            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal-unicens/etc"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal-unicens/lib/plugins"</Elem>
             <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
             <Elem>NDEBUG</Elem>
             <Elem>SUSE_LUA_INCDIR</Elem>
@@ -117,9 +116,8 @@
           <preprocessorList>
             <Elem>AFB_BINDING_VERSION=3</Elem>
             <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
-            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
-            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
-            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal-unicens/etc"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal-unicens/lib/plugins"</Elem>
             <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
             <Elem>NDEBUG</Elem>
             <Elem>SUSE_LUA_INCDIR</Elem>
@@ -149,9 +147,8 @@
           <preprocessorList>
             <Elem>AFB_BINDING_VERSION=3</Elem>
             <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
-            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
-            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
-            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal-unicens/etc"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal-unicens/lib/plugins"</Elem>
             <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
             <Elem>NDEBUG</Elem>
             <Elem>SUSE_LUA_INCDIR</Elem>
@@ -229,9 +226,8 @@
           <preprocessorList>
             <Elem>AFB_BINDING_VERSION=3</Elem>
             <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
-            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
-            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
-            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal-unicens/etc"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal-unicens/lib/plugins"</Elem>
             <Elem>CONTROL_SUPPORT_LUA</Elem>
             <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
             <Elem>NDEBUG</Elem>
@@ -257,9 +253,8 @@
           <preprocessorList>
             <Elem>AFB_BINDING_VERSION=3</Elem>
             <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
-            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
-            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
-            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal-unicens/etc"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal-unicens/lib/plugins"</Elem>
             <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
             <Elem>NDEBUG</Elem>
             <Elem>SUSE_LUA_INCDIR</Elem>
@@ -281,9 +276,8 @@
           <preprocessorList>
             <Elem>AFB_BINDING_VERSION=3</Elem>
             <Elem>AFB_BINDING_WANT_DYNAPI=1</Elem>
-            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal/etc"</Elem>
-            <Elem>CONTROL_LUA_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/lua.d:/usr/local/4a-hal/var"</Elem>
-            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal/lib/plugins"</Elem>
+            <Elem>CONTROL_CONFIG_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/conf.d/project/etc:/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/etc:/usr/local/4a-hal-unicens/etc"</Elem>
+            <Elem>CONTROL_PLUGIN_PATH="/home/M21106/Development/agl/git/4a-hal-integration/4a-hal-unicens/build/package/lib/plugins:/usr/local/4a-hal-unicens/lib/plugins"</Elem>
             <Elem>CTL_PLUGIN_MAGIC=7053042648</Elem>
             <Elem>NDEBUG</Elem>
             <Elem>SUSE_LUA_INCDIR</Elem>
