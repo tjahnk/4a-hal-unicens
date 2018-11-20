@@ -1,11 +1,11 @@
 {
     "$schema": "http://iot.bzh/download/public/schema/json/ctl-schema.json",
     "metadata": {
-        "uid": "/dev/snd/by-id/usb-Microchip-SMSC_OS81210_0200-0000000C-02",
+        "uid": "/dev/snd/by-id/usb-Microchip-SMSC_OS81118_0000-0000004C-02",
         "version": "0.9",
         "api": "4a-hal-unicens",
         "require": [ "alsacore", "UNICENS", "smixer" ],
-        "info": "4a HAL for UNICENS for OS81210",
+        "info": "4a HAL for UNICENS for OS81118",
         "author": "Jonathan Aillet",
         "date": "2018-06-15"
     },
@@ -43,7 +43,7 @@
             "info": "Sets master playback volume",
             "alsa": {
                 "name": "Master Playback Volume",
-                "value": 80,
+                "value": 90,
                 "create":
                 {
                     "type": "INTEGER",
@@ -99,7 +99,7 @@
         ],
         "playbacks" : {
             "uid": "UNICENS",
-            "path": "/dev/snd/by-id/usb-Microchip-SMSC_OS81210_0200-0000000C-02",
+            "path": "/dev/snd/by-id/usb-Microchip-SMSC_OS81118_0000-0000004C-02",
             "params": {
                 "rate": 48000,
                 "format": "S16_LE"
