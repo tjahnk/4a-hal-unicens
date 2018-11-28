@@ -33,9 +33,9 @@
 #include "wrap_volume.h"
 
 #define PCM_MAX_CHANNELS    6
-#define HAL_MY_PLUGIN_NAME  "hal-unicens"
+#define UCS_PLUGIN_NAME     "hal-unicens"
 
-CTLP_CAPI_REGISTER(HAL_MY_PLUGIN_NAME)
+CTLP_CAPI_REGISTER(UCS_PLUGIN_NAME)
         
 AFB_ApiT unicensHalApiHandle;
 static uint8_t initialized = 0;
