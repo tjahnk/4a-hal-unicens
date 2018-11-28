@@ -27,27 +27,26 @@
 
 #include <wrap-json.h>
 #include <ctl-plugin.h>
+#include <ctl-config.h>
 
 #include "wrap_unicens.h"
 #include "wrap_volume.h"
 
-#define PCM_MAX_CHANNELS  6
+#define PCM_MAX_CHANNELS    6
+#define HAL_MY_PLUGIN_NAME  "hal-unicens"
 
-CTLP_CAPI_REGISTER("hal-unicens")
+CTLP_CAPI_REGISTER(HAL_MY_PLUGIN_NAME)
+        
 AFB_ApiT unicensHalApiHandle;
-
 static uint8_t initialized = 0;
-static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
-// Call at initialization time
+/* Call at initialization time, binder is not running yet,
+ * communication to other bindings not possible now. */
 CTLP_ONLOAD(plugin, callbacks)
 {
-    pthread_mutex_lock(&mutex);
     unicensHalApiHandle = plugin->api;
     AFB_ApiNotice(unicensHalApiHandle, "4A-HAL-UNICENS: Plugin Register: uid='%s' 'info='%s'", plugin->uid, plugin->info);
-    pthread_mutex_unlock(&mutex);
-
     return 0;
 }
 
@@ -58,7 +57,6 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
     int err = 0;
     int pcm_volume[PCM_MAX_CHANNELS] = { 100, 100, 100, 100, 100, 100 };
 
-    pthread_mutex_lock(&mutex);
     AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing 4a plugin");
 
     if((err = wrap_volume_init())) {
@@ -78,22 +76,20 @@ CTLP_CAPI(Init, source, argsJ, queryJ)
     initialized = 1;
 
 Abort_Exit:
-    pthread_mutex_unlock(&mutex);
     AFB_ApiNotice(source->api, "4A-HAL-UNICENS: Initializing plugin done, err=%d", err);
+    err = 0;            /* avoid returning non-zero value, to force loading the plugin */
     return err;
 }
 
 
+/* Is called when master volume is incremented by ALSA */
 CTLP_CAPI(MasterVol, source, argsJ, queryJ)
 {
     int master_volume;
     json_object *valueJ;
     int err = 0;
 
-    pthread_mutex_lock(&mutex);
-
     AFB_ApiNotice(source->api, "4A-HAL-UNICENS: MasterVolume=%s", json_object_to_json_string(queryJ));
-
     if(! initialized) {
             AFB_ApiWarning(source->api, "%s: Link to unicens binder is not initialized, can't set master volume, value=%s", __func__, json_object_get_string(queryJ));
             err = -1;
@@ -117,12 +113,12 @@ CTLP_CAPI(MasterVol, source, argsJ, queryJ)
     wrap_volume_master(source->api, master_volume);
 
 Abort_Exit:        
-    pthread_mutex_unlock(&mutex);
-
+    err = 0;            /* avoid returning non-zero value, to force loading the plugin */
     return err;
 }
 
 
+/* not used at the moment, disabled in JSON configuration */
 CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 {
     AFB_ApiNotice(source->api, "4A-HAL-UNICENS: PCMVolume=%s", json_object_to_json_string(queryJ));
@@ -130,15 +126,15 @@ CTLP_CAPI(PCMVol, source, argsJ, queryJ)
 }
 
 
-// This receive UNICENS events
+/* Is called on UNICENS events */
 CTLP_CAPI(Events, source, argsJ, queryJ)
 {
     uint16_t node = 0U;
     bool available = false;
     int err = 0;
     json_object *j_tmp = NULL;
-
-    pthread_mutex_lock(&mutex);
+    
+    AFB_ApiError(source->api, "4A-HAL-UNICENS: receiving event query=%s", json_object_to_json_string(queryJ));
 
     if (initialized == 0) {
         AFB_ApiError(source->api, "4A-HAL-UNICENS: Not initialized while receiving event query=%s", json_object_to_json_string(queryJ));
@@ -169,7 +165,6 @@ CTLP_CAPI(Events, source, argsJ, queryJ)
     }
 
 Abort_Exit:
-    pthread_mutex_unlock(&mutex);
-
+    err = 0;            /* avoid returning non-zero value now */
     return err;
 }
