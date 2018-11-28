@@ -54,23 +54,6 @@
                 }
             },
             "action": "plugin://hal-unicens#MasterVol"
-        },
-        {
-            "uid": "agl-pcm-playback-volume",
-            "info": "Sets PCM playback volume",
-            "alsa": {
-                "name": "PCM Playback Volume",
-                "value": 100,
-                "create":
-                {
-                    "type": "INTEGER",
-                    "count": 1,
-                    "minval": 0,
-                    "maxval": 100,
-                    "step": 1
-                }
-            },
-            "action": "plugin://hal-unicens#PCMVol"
         }
     ],
     "halmixer": {
@@ -230,18 +213,6 @@
                 "uid": "emergency",
                 "verb": "emergency",
                 "zone": "front-seats",
-                "volume": 70,
-                "mute": false,
-                "params": {
-                    "rate": 48000,
-                    "format": "S16_LE"
-                }
-            },
-            {
-                "uid": "legacy",
-                "verb": "legacy",
-                "zone": "full-stereo",
-                "source": "loop-legacy",
                 "volume": 70,
                 "mute": false,
                 "params": {
