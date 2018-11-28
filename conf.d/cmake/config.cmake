@@ -22,10 +22,10 @@ set(PROJECT_NAME 4a-hal)
 set(PROJECT_PRETTY_NAME "4A-HAL")
 set(PROJECT_DESCRIPTION "Hardware Abastraction Layer for AGL Audio Advanced Architecture")
 set(PROJECT_VERSION "0.9")
-set(PROJECT_URL "https://github.com/iotbzh/4a-hal-generic")
+set(PROJECT_URL "https://github.com/tjahnk/4a-hal-unicens")
 set(PROJECT_ICON "icon.png")
-set(PROJECT_AUTHOR "Jonathan Aillet")
-set(PROJECT_AUTHOR_MAIL "jonathan.aillet@iot.bzh")
+set(PROJECT_AUTHOR "Jonathan Aillet, Tobias Jahnke")
+set(PROJECT_AUTHOR_MAIL "jonathan.aillet@iot.bzh, tobias.jahnke@microchip.com")
 set(PROJECT_LICENSE "APL2.0")
 set(PROJECT_LANGUAGES "C")
 
@@ -167,7 +167,7 @@ set(WIDGET_TYPE application/vnd.agl.service)
 # This is the file that will be executed, loaded,
 # at launch time by the application framework.
 #
-set(WIDGET_ENTRY_POINT lib/afb-4a-hal.so)
+# set(WIDGET_ENTRY_POINT lib/afb-4a-hal.so)
 
 # Optional dependencies order
 # ---------------------------
