@@ -11,30 +11,23 @@
     },
     "resources": [
         {
-            "uid": "hal-unicens",
-            "info": "UNICENS HAL plugin",
+            "uid": "hal-unicens-output",
+            "info": "UNICENS HAL plugin for output audio",
             "spath": "./package/lib/plugins:./package/var:./lib/plugins:./var:/usr/libexec/agl/4a-hal",
-            "libs": ["hal-unicens.ctlso"]
+            "libs": ["hal-unicens-output.ctlso"]
         }
     ],
     "onload": [
         {
             "uid": "init-audio-hal",
             "info": "Init current HAL",
-            "action": "plugin://hal-unicens#Init"
-        }
-    ],
-    "controls": [
-        {
-            "uid": "ping",
-            "info": "Ping hal",
-            "action": "api://4a-hal-manager#ping"
+            "action": "plugin://hal-unicens-output#Init"
         }
     ],
     "events": [
         {
             "uid": "UNICENS/node-availibility",
-            "action": "plugin://hal-unicens#Events"
+            "action": "plugin://hal-unicens-output#Events"
         }
     ],
     "halmap": [
@@ -53,7 +46,7 @@
                     "step": 1
                 }
             },
-            "action": "plugin://hal-unicens#MasterVol"
+            "action": "plugin://hal-unicens-output#MasterVol"
         }
     ],
     "halmixer": {
