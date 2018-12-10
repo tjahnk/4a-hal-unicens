@@ -15,6 +15,12 @@
             "info": "UNICENS HAL plugin for output audio",
             "spath": "./package/lib/plugins:./package/var:./lib/plugins:./var:/usr/libexec/agl/4a-hal",
             "libs": ["hal-unicens-output.ctlso"]
+        },
+        {
+            "uid": "hal-unicens-md-input",
+            "info": "UNICENS HAL plugin for input multi-directional microphone",
+            "spath": "./package/lib/plugins:./package/var:./lib/plugins:./var:/usr/libexec/agl/4a-hal",
+            "libs": ["hal-unicens-md-input.ctlso"]
         }
     ],
     "onload": [
